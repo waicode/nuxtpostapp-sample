@@ -1,25 +1,71 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">nuxtpostapp-sample</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div>
+    <nav class="navbar has-shadow">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="../">
+            <img
+              src="http://bulma.io/images/bulma-logo.png"
+              alt="Bulma: a modern CSS framework based on Flexbox"
+            />
+          </a>
+          <div
+            class="navbar-burger burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navMenu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div id="navMenu" class="navbar-menu">
+          <div class="navbar-end">
+            <div class="navbar-item has-dropdown">
+              <a class="navbar-link"> Menu </a>
+              <div class="navbar-dropdown">
+                <a class="navbar-item"> Dashboard </a>
+                <a class="navbar-item"> Profile </a>
+                <a class="navbar-item"> Settings </a>
+                <hr class="navbar-divider" />
+                <div class="navbar-item">Logout</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="blogs-page">
+      <div class="main-content">
+        <div class="container">
+          <div class="columns is-mobile">
+            <div class="column is-8 is-offset-2">
+              <div class="section">
+                <div class="title">
+                  <h1>Newest Posts</h1>
+                  <hr />
+                </div>
+                <div class="post">
+                  <a class="post-header post-header-link clickable">
+                    <h4 class="title is-4">Some Title</h4>
+                    <h5 class="subtitle is-5">Some Subtitle</h5>
+                  </a>
+                  <div class="post-content">by Filip Jerga, 27th Jan, 2019</div>
+                </div>
+                <div class="post">
+                  <a class="post-header post-header-link clickable">
+                    <h4 class="title is-4">Some Title</h4>
+                    <h5 class="subtitle is-5">Some Subtitle</h5>
+                  </a>
+                  <div class="post-content">by Filip Jerga, 27th Jan, 2019</div>
+                </div>
+              </div>
+              <!-- end of post -->
+            </div>
+            <!-- end of side bar -->
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -30,34 +76,17 @@ export default {}
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.post-content {
+  font-style: italic;
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.post {
+  margin-bottom: 20px;
+  padding: 5px;
+  border-bottom: 2px solid transparent;
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+.post:hover {
+  border-bottom: 2px solid #e8e8e8;
 }
 </style>
