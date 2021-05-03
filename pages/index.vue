@@ -11,8 +11,12 @@
                   <h1>Newest Posts</h1>
                   <hr />
                 </div>
-                <PostItem />
-                <PostItem />
+                <PostItem
+                  v-for="post in posts"
+                  :key="post._id"
+                  :title="post.title"
+                  :subtitle="post.subtitle"
+                />
               </div>
             </div>
           </div>
@@ -23,7 +27,25 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      title: 'My Title',
+      posts: [
+        {
+          _id: '1',
+          title: 'aaa',
+          subtitle: 'bbb',
+        },
+        {
+          _id: '1',
+          title: 'ccc',
+          subtitle: 'ddd',
+        },
+      ],
+    }
+  },
+}
 </script>
 
 <style>
