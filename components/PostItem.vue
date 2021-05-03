@@ -4,10 +4,11 @@
       <h4 class="title is-4">{{ title }}</h4>
       <h5 class="subtitle is-5">{{ subtitle }}</h5>
     </a>
-    <div class="post-content">by Filip Jerga, 27th Jan, 2019</div>
+    <div class="post-content">by Filip Jerga, {{ formatDate(date) }}</div>
   </div>
 </template>
 <script>
+import moment from 'moment'
 export default {
   props: {
     title: {
@@ -18,6 +19,21 @@ export default {
       type: String,
       required: false,
       default: '',
+    },
+    date: {
+      type: Date,
+      required: false,
+      default: new Date(),
+    },
+  },
+  data() {
+    return {
+      moment,
+    }
+  },
+  methods: {
+    formatDate(date) {
+      return moment(date).format('LL')
     },
   },
 }

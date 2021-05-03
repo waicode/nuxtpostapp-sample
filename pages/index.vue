@@ -16,6 +16,7 @@
                   :key="post._id"
                   :title="post.title"
                   :subtitle="post.subtitle"
+                  :date="post.createdAt"
                 />
               </div>
             </div>
@@ -36,11 +37,13 @@ export default {
           _id: '1',
           title: 'aaa',
           subtitle: 'bbb',
+          createdAt: new Date(),
         },
         {
           _id: '1',
           title: 'ccc',
           subtitle: 'ddd',
+          createdAt: new Date(),
         },
       ],
     }
