@@ -33,7 +33,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
   data() {
     return {
@@ -44,21 +43,24 @@ export default {
       },
     }
   },
+  async fetch() {
+    await this.$store.dispatch('post/fetchPosts')
+  },
   computed: {
-    ...mapState(['posts']),
-    methods: {
-      isFormValid() {
-        if (this.form.title) {
-          return true
-        }
-        return false
-      },
+    posts() {
+      return this.$store.state.post.items
     },
   },
-  created() {
-    this.$store.dispatch('fetchPosts').then((posts) => {
-      console.log(posts)
-    })
+  // mounted() {
+  //   this.$store.dispatch('post/fetchPosts')
+  // },
+  methods: {
+    isFormValid() {
+      if (this.form.title) {
+        return true
+      }
+      return false
+    },
   },
 }
 </script>

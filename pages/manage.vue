@@ -76,7 +76,6 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
 export default {
   data() {
     return {
@@ -84,7 +83,9 @@ export default {
     }
   },
   computed: {
-    ...mapState(['posts']),
+    posts() {
+      return this.$store.state.post.items
+    },
   },
 }
 </script>
