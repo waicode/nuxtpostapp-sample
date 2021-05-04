@@ -17,6 +17,7 @@
                   :title="post.title"
                   :subtitle="post.subtitle"
                   :date="post.createdAt"
+                  :is-read="post.isRead"
                 />
               </div>
             </div>
@@ -38,31 +39,17 @@ export default {
           title: 'aaa',
           subtitle: 'bbb',
           createdAt: new Date(),
+          isRead: true,
         },
         {
           _id: '1',
           title: 'ccc',
           subtitle: 'ddd',
           createdAt: new Date(),
+          isRead: false,
         },
       ],
     }
   },
 }
 </script>
-
-<style>
-.post-content {
-  font-style: italic;
-}
-
-.post {
-  margin-bottom: 20px;
-  padding: 5px;
-  border-bottom: 2px solid transparent;
-}
-
-.post:hover {
-  border-bottom: 2px solid #e8e8e8;
-}
-</style>
