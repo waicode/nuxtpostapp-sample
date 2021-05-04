@@ -14,7 +14,7 @@
           aria-expanded="false"
           data-target="navMenu"
           :class="{ 'is-active': isActive }"
-          @click="isActive = !isActive"
+          @click="toggleIsActive"
         >
           <span></span>
           <span></span>
@@ -25,7 +25,7 @@
         id="navMenu"
         class="navbar-menu"
         :class="{ 'is-active': isActive }"
-        @click="isActive = !isActive"
+        @click="toggleIsActive"
       >
         <div class="navbar-end">
           <div
@@ -34,11 +34,8 @@
           >
             <a class="navbar-link"> Menu </a>
             <div class="navbar-dropdown">
-              <a class="navbar-item"> Dashboard </a>
-              <a class="navbar-item"> Profile </a>
-              <a class="navbar-item"> Settings </a>
-              <hr class="navbar-divider" />
-              <div class="navbar-item">Logout</div>
+              <nuxt-link to="/" class="navbar-item"> Home </nuxt-link>
+              <nuxt-link to="/manage" class="navbar-item"> Manage </nuxt-link>
             </div>
           </div>
         </div>
@@ -52,6 +49,11 @@ export default {
     return {
       isActive: false,
     }
+  },
+  methods: {
+    toggleIsActive() {
+      this.isActive = !this.isActive
+    },
   },
 }
 </script>
