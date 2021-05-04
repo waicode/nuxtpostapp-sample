@@ -13,15 +13,25 @@
           aria-label="menu"
           aria-expanded="false"
           data-target="navMenu"
+          :class="{ 'is-active': isActive }"
+          @click="isActive = !isActive"
         >
           <span></span>
           <span></span>
           <span></span>
         </div>
       </div>
-      <div id="navMenu" class="navbar-menu">
+      <div
+        id="navMenu"
+        class="navbar-menu"
+        :class="{ 'is-active': isActive }"
+        @click="isActive = !isActive"
+      >
         <div class="navbar-end">
-          <div class="navbar-item has-dropdown">
+          <div
+            class="navbar-item has-dropdown"
+            :class="{ 'is-active': isActive }"
+          >
             <a class="navbar-link"> Menu </a>
             <div class="navbar-dropdown">
               <a class="navbar-item"> Dashboard </a>
@@ -36,3 +46,12 @@
     </div>
   </nav>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      isActive: false,
+    }
+  },
+}
+</script>

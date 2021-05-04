@@ -24,21 +24,35 @@
           </div>
         </div>
       </div>
+      <form>
+        <input v-model="form.title" type="text" />
+        <input v-model="form.subtitle" type="text" />
+      </form>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   data() {
     return {
       title: 'My Title',
-      // posts: this.$store.state.posts,
+      form: {
+        title: 'some title',
+        subtitle: 'some subtitle',
+      },
     }
   },
   computed: {
-    posts() {
-      return this.$store.state.posts
+    ...mapState(['posts']),
+    methods: {
+      isFormValid() {
+        if (this.form.title) {
+          return true
+        }
+        return false
+      },
     },
   },
 }
