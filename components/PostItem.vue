@@ -4,7 +4,9 @@
       <h4 class="title is-4">{{ title }}</h4>
       <h5 class="subtitle is-5">{{ subtitle }}</h5>
     </a>
-    <div class="post-content">by Filip Jerga, {{ formatDate(date) }}</div>
+    <div class="post-content">
+      by Filip Jerga, {{ date | formatDate('LLL') }}
+    </div>
   </div>
 </template>
 <script>
@@ -31,10 +33,10 @@ export default {
       moment,
     }
   },
-  methods: {
-    formatDate(date) {
-      return moment(date).format('LL')
-    },
-  },
+  // methods: {
+  //   formatDate(date) {
+  //     return moment(date).format('LL')
+  //   },
+  // },
 }
 </script>
