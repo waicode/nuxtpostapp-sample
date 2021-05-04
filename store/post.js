@@ -17,7 +17,7 @@ const INITIAL_DATA = {
   ],
 }
 
-function fetchPostsAPI() {
+export function fetchPostsAPI() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(INITIAL_DATA.posts)

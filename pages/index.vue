@@ -34,6 +34,10 @@
 
 <script>
 export default {
+  // async asyncData() {
+  //   const posts = await fetchPostsAPI()
+  //   return { posts }
+  // },
   data() {
     return {
       title: 'My Title',
@@ -43,8 +47,10 @@ export default {
       },
     }
   },
-  async fetch() {
-    await this.$store.dispatch('post/fetchPosts')
+  async fetch({ store }) {
+    if (store.state.post.items.length === 0) {
+      return await store.dispatch('post/fetchPosts')
+    }
   },
   computed: {
     posts() {
