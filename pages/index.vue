@@ -55,5 +55,10 @@ export default {
       },
     },
   },
+  created() {
+    this.$store.dispatch('fetchPosts').then((posts) => {
+      console.log(posts)
+    })
+  },
 }
 </script>
