@@ -15,8 +15,7 @@
           ></button>
         </header>
         <section class="modal-card-body">
-          <h1>Some Testing Data</h1>
-          <h2>Just some text</h2>
+          <slot>Nothing...</slot>
         </section>
         <footer class="modal-card-foot">
           <button class="button is-success">Save changes</button>
