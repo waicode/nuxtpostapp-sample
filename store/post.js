@@ -1,31 +1,11 @@
 import Vue from 'vue'
-
-const INITIAL_DATA = {
-  posts: [
-    {
-      _id: '1',
-      title: 'aaa',
-      subtitle: 'bbb',
-      createdAt: new Date(),
-      isRead: true,
-      content: 'dkfjdaskfjaklsdjfkladjslkasjklasdjfkasjdfkdas,fdsafjasklda',
-    },
-    {
-      _id: '2',
-      title: 'ccc',
-      subtitle: 'ddd',
-      createdAt: new Date(),
-      isRead: false,
-      content: 'dkfjdaskfjaklsdjfkladjslkasjklasdjfkasjdfkdas,fdsafjasklda',
-    },
-  ],
-}
+import INITIAL_DATA from './data/initial_data.json'
 
 export function fetchPostsAPI() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(INITIAL_DATA.posts)
-    }, 1000)
+    }, 0)
   })
 }
 
@@ -49,8 +29,12 @@ export const actions = {
   },
   createPost({ commit }, postData) {
     postData._id = Math.random().toString(36).substr(2, 7)
-    postData.createdAt = new Date()
-    commit('addPost', postData)
+    postData.createdAt = new Date().getTime()
+    console.log(postData.createdAt)
+    return this.$axios.$post('/api/posts', postData).then((res) => {
+      console.log({ res })
+      commit('addPost', postData)
+    })
   },
   updatePost({ commit, state }, postData) {
     const postIndex = state.items.findIndex((post) => {

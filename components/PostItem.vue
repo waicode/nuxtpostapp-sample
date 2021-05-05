@@ -30,7 +30,7 @@ export default {
       default: '',
     },
     date: {
-      type: Date,
+      type: Number,
       required: false,
       default: new Date(),
     },
