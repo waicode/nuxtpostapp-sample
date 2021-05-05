@@ -12,6 +12,9 @@
               v-for="post in posts"
               :key="post._id"
               class="card"
+              :class="{
+                'is-active': activePost && post._id === activePost._id,
+              }"
               @click="activatePost(post)"
             >
               <div class="card-content">
@@ -89,17 +92,19 @@ export default {
   },
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .manage-page {
   padding: 30px;
 }
 
 .card {
   margin-bottom: 10px;
-}
-
-.card:hover {
-  cursor: pointer;
-  background-color: #eeeeee;
+  &.is-active {
+    background-color: #f5f5f5;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: #eeeeee;
+  }
 }
 </style>

@@ -17,7 +17,7 @@
         <input
           v-model="post.subtitle"
           class="input"
-          type="email"
+          type="text"
           placeholder="Awesome subtitle"
         />
       </div>
@@ -32,7 +32,9 @@
         ></textarea>
       </div>
     </div>
-    <button class="button is-primary">Update</button>
+    <button @click.prevent="updatePost" class="button is-primary">
+      Update
+    </button>
   </form>
 </template>
 
@@ -47,6 +49,11 @@ export default {
   watch: {
     postData(data, oldValue) {
       this.post = { ...data }
+    },
+  },
+  methods: {
+    updatePost() {
+      this.$store.dispatch('post/updatePost', { ...this.post })
     },
   },
 }
