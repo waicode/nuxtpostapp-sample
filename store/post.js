@@ -40,17 +40,21 @@ export const getters = {
 export const actions = {
   fetchPosts({ commit }) {
     return fetchPostsAPI().then((posts) => {
-      console.log({ posts })
-      console.log('fetchPostsAPI')
       commit('setPosts', posts)
     })
+  },
+  createPost({ commit }, postData) {
+    postData._id = Math.random().toString(36).substr(2, 7)
+    postData.createdAt = new Date()
+    commit('addPost', postData)
   },
 }
 
 export const mutations = {
   setPosts(state, posts) {
-    console.log('setPosts')
-    console.log({ posts })
     state.items = posts
+  },
+  addPost(state, newPost) {
+    state.items.push(newPost)
   },
 }

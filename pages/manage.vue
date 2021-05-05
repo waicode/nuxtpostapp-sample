@@ -4,45 +4,7 @@
     <div class="manage-page">
       <div class="columns mail-app">
         <aside class="column is-2 aside hero">
-          <div>
-            <div class="compose has-text-centered">
-              <Modal>
-                <form class="post-form">
-                  <div class="field">
-                    <label class="label">Title</label>
-                    <div class="control">
-                      <input
-                        class="input"
-                        type="text"
-                        placeholder="Awesome Title"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="field">
-                    <label class="label">Subtitle</label>
-                    <div class="control">
-                      <input
-                        class="input"
-                        type="email"
-                        placeholder="Awesome subtitle"
-                      />
-                    </div>
-                  </div>
-                  <div class="field">
-                    <label class="label">Content</label>
-                    <div class="control">
-                      <textarea
-                        class="textarea"
-                        placeholder="Awesome Content"
-                      ></textarea>
-                    </div>
-                  </div>
-                </form>
-              </Modal>
-            </div>
-            <div class="main"></div>
-          </div>
+          <PostCreate />
         </aside>
         <div class="column is-4 messages hero is-fullheight" id="message-feed">
           <div class="inbox-messages" id="inbox-messages">
@@ -57,11 +19,11 @@
                 </div>
                 <div class="msg-subject">
                   <span class="msg-subject"
-                    ><strong id="fake-subject-1">Some Title</strong></span
+                    ><strong id="fake-subject-1">{{ post.title }}</strong></span
                   >
                 </div>
                 <div class="msg-snippet">
-                  <p id="fake-snippet-1">Some Subtitle</p>
+                  <p id="fake-snippet-1">{{ post.subtitle }}</p>
                 </div>
               </div>
             </div>
@@ -107,16 +69,7 @@
   </div>
 </template>
 <script>
-import Modal from '~/components/shared/Modal'
 export default {
-  components: {
-    Modal,
-  },
-  data() {
-    return {
-      //   posts: this.$store.state.posts,
-    }
-  },
   async fetch({ store }) {
     if (store.getters['post/hasEmptyItems']) {
       return await store.dispatch('post/fetchPosts')
@@ -141,8 +94,5 @@ export default {
 .card:hover {
   cursor: pointer;
   background-color: #eeeeee;
-}
-.post-form {
-  text-align: left;
 }
 </style>
