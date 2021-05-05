@@ -7,8 +7,13 @@
           <PostCreate />
         </aside>
         <div class="column is-4 messages hero is-fullheight" id="message-feed">
-          <div class="inbox-messages" id="inbox-messages">
-            <div v-for="post in posts" :key="post._id" class="card">
+          <div id="inbox-messages" class="inbox-messages">
+            <div
+              v-for="post in posts"
+              :key="post._id"
+              class="card"
+              @click="activatePost(post)"
+            >
               <div class="card-content">
                 <div class="msg-header">
                   <span class="msg-from"><small>From Filip Jerga</small></span>
@@ -29,22 +34,9 @@
             </div>
           </div>
         </div>
-        <div
-          class="column is-6 message hero is-fullheight is-hidden"
-          id="message-pane"
-        >
+        <div id="message-pane" class="column is-6 message hero is-fullheight">
           <div class="box message-preview">
-            <div class="top">
-              <div class="avatar">
-                <img src="https://placehold.it/128x128" />
-              </div>
-              <div class="address">
-                <div class="name">John Smith</div>
-                <div class="email">someone@gmail.com</div>
-              </div>
-              <hr />
-              <div class="content"></div>
-            </div>
+            <PostUpdate :post-data="activePost" />
           </div>
         </div>
       </div>
@@ -70,6 +62,11 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      activePost: {},
+    }
+  },
   async fetch({ store }) {
     if (store.getters['post/hasEmptyItems']) {
       return await store.dispatch('post/fetchPosts')
@@ -78,6 +75,16 @@ export default {
   computed: {
     posts() {
       return this.$store.state.post.items
+    },
+  },
+  created() {
+    if (this.posts && this.posts.length > 0) {
+      this.activePost = this.posts[0]
+    }
+  },
+  methods: {
+    activatePost(post) {
+      this.activePost = post
     },
   },
 }

@@ -6,6 +6,7 @@ const INITIAL_DATA = {
       subtitle: 'bbb',
       createdAt: new Date(),
       isRead: true,
+      content: 'dkfjdaskfjaklsdjfkladjslkasjklasdjfkasjdfkdas,fdsafjasklda',
     },
     {
       _id: '2',
@@ -13,6 +14,7 @@ const INITIAL_DATA = {
       subtitle: 'ddd',
       createdAt: new Date(),
       isRead: false,
+      content: 'dkfjdaskfjaklsdjfkladjslkasjklasdjfkasjdfkdas,fdsafjasklda',
     },
   ],
 }
