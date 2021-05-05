@@ -31,6 +31,12 @@ export const state = () => {
   }
 }
 
+export const getters = {
+  hasEmptyItems(state) {
+    return state.items.length === 0
+  },
+}
+
 export const actions = {
   fetchPosts({ commit }) {
     return fetchPostsAPI().then((posts) => {
