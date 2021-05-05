@@ -6,9 +6,7 @@
         <aside class="column is-2 aside hero">
           <div>
             <div class="compose has-text-centered">
-              <a class="button is-danger is-block is-bold">
-                <span class="compose">Create</span>
-              </a>
+              <Modal />
             </div>
             <div class="main"></div>
           </div>
@@ -76,10 +74,19 @@
   </div>
 </template>
 <script>
+import Modal from '~/components/shared/Modal'
 export default {
+  components: {
+    Modal,
+  },
   data() {
     return {
       //   posts: this.$store.state.posts,
+    }
+  },
+  async fetch({ store }) {
+    if (store.getters['post/hasEmptyItems']) {
+      return await store.dispatch('post/fetchPosts')
     }
   },
   computed: {
