@@ -30,9 +30,7 @@ export const actions = {
   createPost({ commit }, postData) {
     postData._id = Math.random().toString(36).substr(2, 7)
     postData.createdAt = new Date().getTime()
-    console.log(postData.createdAt)
     return this.$axios.$post('/api/posts', postData).then((res) => {
-      console.log({ res })
       commit('addPost', postData)
     })
   },
@@ -40,7 +38,11 @@ export const actions = {
     const postIndex = state.items.findIndex((post) => {
       return post._id === postData._id
     })
-    commit('replacePost', { post: postData, index: postIndex })
+    return this.$axios
+      .$patch(`/api/posts/${postIndex}`, postData)
+      .then((res) => {
+        commit('replacePost', { post: postData, index: postIndex })
+      })
   },
 }
 
