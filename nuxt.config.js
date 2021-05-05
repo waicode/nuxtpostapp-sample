@@ -40,5 +40,6 @@ module.exports = {
   axios: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
+  serverMiddleware: ['~/server/routes/index'],
   build: {},
 }
