@@ -39,6 +39,9 @@
         </div>
         <div id="message-pane" class="column is-6 message hero is-fullheight">
           <div class="box message-preview">
+            <button @click="deletePost" class="button is-danger delete-button">
+              Delete
+            </button>
             <PostUpdate :post-data="activePost" />
           </div>
         </div>
