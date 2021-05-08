@@ -44,6 +44,7 @@ export const actions = {
         commit('replacePost', { post: postData, index: postIndex })
       })
   },
+  deletePost({ commit, state }, postData) {},
 }
 
 export const mutations = {

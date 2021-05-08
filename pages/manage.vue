@@ -39,7 +39,7 @@
         </div>
         <div id="message-pane" class="column is-6 message hero is-fullheight">
           <div class="box message-preview">
-            <button @click="deletePost" class="button is-danger delete-button">
+            <button class="button is-danger delete-button" @click="deletePost">
               Delete
             </button>
             <PostUpdate :post-data="activePost" />
@@ -92,6 +92,7 @@ export default {
     activatePost(post) {
       this.activePost = post
     },
+    deletePost() {},
   },
 }
 </script>
@@ -109,5 +110,12 @@ export default {
     cursor: pointer;
     background-color: #eeeeee;
   }
+}
+
+.delete-button {
+  display: block;
+  width: 100px;
+  margin-left: auto;
+  margin-right: 0;
 }
 </style>
