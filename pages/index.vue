@@ -19,7 +19,6 @@
                     :title="post.title"
                     :subtitle="post.subtitle"
                     :date="post.createdAt"
-                    :is-read="post.isRead"
                   />
                 </div>
                 <div v-else>No Posts :(</div>

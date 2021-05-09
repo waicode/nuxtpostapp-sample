@@ -32,6 +32,10 @@
         ></textarea>
       </div>
     </div>
+    <div class="markdown">
+      <label class="label">Content Preview</label>
+      <div v-html="compiledMarkdown"></div>
+    </div>
     <button @click.prevent="updatePost" class="button is-primary">
       Update
     </button>
@@ -40,11 +44,22 @@
 
 <script>
 export default {
-  props: ['postData'],
+  props: {
+    postData: Object,
+  },
   data() {
     return {
       post: { ...this.postData },
     }
+  },
+  computed: {
+    compiledMarkdown() {
+      if (process.client) {
+        // eslint-disable-next-line no-undef
+        return marked(this.post.content, { sanitize: true })
+      }
+      return ''
+    },
   },
   watch: {
     postData(data, oldValue) {

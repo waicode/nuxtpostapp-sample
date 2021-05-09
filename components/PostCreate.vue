@@ -40,6 +40,10 @@
             ></textarea>
           </div>
         </div>
+        <div class="markdown">
+          <label class="label">Content Preview</label>
+          <div v-html="compiledMarkdown"></div>
+        </div>
       </form>
     </template>
   </Modal>
@@ -60,6 +64,15 @@ export default {
         content: '',
       },
     }
+  },
+  computed: {
+    compiledMarkdown() {
+      if (process.client) {
+        // eslint-disable-next-line no-undef
+        return marked(this.form.content, { sanitize: true })
+      }
+      return ''
+    },
   },
   methods: {
     createPost({ closeModal, data }) {

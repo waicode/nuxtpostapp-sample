@@ -9,14 +9,14 @@ import Vue from 'vue'
 //   })
 // }
 
-const setArchivedPosts = (archivedPosts) => {
+const setLocalStorage = (archivedPosts) => {
   localStorage.setItem('archived_posts', JSON.stringify(archivedPosts, null, 2))
 }
 
 export const state = () => {
   return {
     items: [],
-    archivedPosts: [],
+    archivedItems: [],
   }
 }
 
@@ -30,16 +30,16 @@ export const actions = {
   getArchivedPosts({ commit }) {
     const archivedPosts = localStorage.getItem('archived_posts')
     if (archivedPosts) {
-      commit('setArchivedItems', JSON.parse(archivedPosts))
+      commit('setArchivedPosts', JSON.parse(archivedPosts))
       return archivedPosts
     } else {
-      setArchivedPosts([])
+      setLocalStorage([])
       return []
     }
   },
   togglePost({ state, commit, dispatch }, postId) {
-    if (state.archivedPosts.includes(postId)) {
-      const index = state.archivedPosts.findIndex((id) => id === postId)
+    if (state.archivedItems.includes(postId)) {
+      const index = state.archivedItems.findIndex((id) => id === postId)
       commit('removeArchivedPost', index)
       dispatch('persistArchivedPosts')
       return postId
@@ -50,7 +50,7 @@ export const actions = {
     }
   },
   persistArchivedPosts({ state }) {
-    setArchivedPosts(state.archivedPosts)
+    setLocalStorage(state.archivedItems)
   },
   fetchPosts({ commit }) {
     return this.$axios.$get('/api/posts').then((posts) => {
@@ -89,14 +89,14 @@ export const actions = {
 }
 
 export const mutations = {
-  getArchivedPosts(state, archivedPosts) {
-    state.archivedPosts = archivedPosts
+  setArchivedPosts(state, archivedPosts) {
+    state.archivedItems = archivedPosts
   },
   addArchivedPost(state, postId) {
-    state.archivedPosts.push(postId)
+    state.archivedItems.push(postId)
   },
   removeArchivedPost(state, index) {
-    state.archivedPosts.splice(index, 1)
+    state.archivedItems.splice(index, 1)
   },
   setPosts(state, posts) {
     state.items = posts
