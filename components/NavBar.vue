@@ -4,8 +4,8 @@
       <div class="navbar-brand">
         <a class="navbar-item" href="../">
           <img
-            src="http://bulma.io/images/bulma-logo.png"
-            alt="Bulma: a modern CSS framework based on Flexbox"
+            src="@/assets/image/nuxtjs-typo.svg"
+            alt="Nuxt JS Sample Post Application"
           />
         </a>
         <div
@@ -57,3 +57,8 @@ export default {
   },
 }
 </script>
+<style lang="scss" scoped>
+.navbar-item img {
+  max-height: 1.24rem;
+}
+</style>

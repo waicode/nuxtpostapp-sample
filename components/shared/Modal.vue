@@ -9,21 +9,23 @@
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Modal title</p>
+          <p class="modal-card-title">{{ title }}</p>
           <button
             class="delete"
             @click="isActive = false"
-            aria-label="close"
+            aria-label="閉じる"
           ></button>
         </header>
         <section class="modal-card-body">
           <slot name="formContent">Nothing...</slot>
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success" @click="emitModalSubmit">
-            Save changes
+          <button class="button is-primary" @click="emitModalSubmit">
+            {{ saveButtonText }}
           </button>
-          <button class="button" @click="isActive = false">Cancel</button>
+          <button class="button is-text" @click="isActive = false">
+            {{ cancelButtonText }}
+          </button>
         </footer>
       </div>
     </div>
@@ -31,6 +33,20 @@
 </template>
 <script>
 export default {
+  props: {
+    title: {
+      type: String,
+      default: 'Modal title',
+    },
+    saveButtonText: {
+      type: String,
+      default: '保存',
+    },
+    cancelButtonText: {
+      type: String,
+      default: 'キャンセル',
+    },
+  },
   data() {
     return {
       isActive: false,

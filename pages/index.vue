@@ -1,11 +1,10 @@
 <template>
   <div>
-    <NavBar />
     <div class="blogs-page">
       <div class="main-content">
         <div class="container">
-          <div class="columns is-mobile">
-            <div class="column is-8 is-offset-2">
+          <div class="columns">
+            <div class="column is-10 is-offset-1">
               <div class="section">
                 <div class="title">
                   <h1>Newest Posts</h1>
@@ -33,16 +32,12 @@
 
 <script>
 export default {
-  // async asyncData() {
-  //   const posts = await fetchPostsAPI()
-  //   return { posts }
-  // },
   data() {
     return {
-      title: 'My Title',
+      title: '',
       form: {
-        title: 'some title',
-        subtitle: 'some subtitle',
+        title: '',
+        subtitle: '',
       },
     }
   },

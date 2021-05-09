@@ -8,9 +8,7 @@
         <h4 class="title is-4">{{ title }}</h4>
         <h5 class="subtitle is-5">{{ subtitle }}</h5>
       </nuxt-link>
-      <div class="post-footer">
-        by Filip Jerga, {{ date | formatDate('LLL') }}
-      </div>
+      <div class="post-footer">created at {{ date | formatDate('LLL') }}</div>
     </div>
     <div class="post-right">
       <label class="checkbox">
