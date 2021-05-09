@@ -15,6 +15,7 @@
                   <PostItem
                     v-for="post in posts"
                     :key="post._id"
+                    :id="post._id"
                     :title="post.title"
                     :subtitle="post.subtitle"
                     :date="post.createdAt"

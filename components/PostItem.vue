@@ -11,7 +11,7 @@
     </div>
     <div class="post-right">
       <label class="checkbox">
-        <input type="checkbox" :checked="isRead" />Read
+        <input @change="togglePost" type="checkbox" :checked="isRead" />Read
       </label>
     </div>
   </div>
@@ -20,6 +20,10 @@
 import moment from 'moment'
 export default {
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     title: {
       type: String,
       required: true,
@@ -45,11 +49,11 @@ export default {
       moment,
     }
   },
-  // methods: {
-  //   formatDate(date) {
-  //     return moment(date).format('LL')
-  //   },
-  // },
+  methods: {
+    togglePost() {
+      this.$store.dispatch('post/togglePost', this.id)
+    },
+  },
 }
 </script>
 <style scoped lang="scss">
