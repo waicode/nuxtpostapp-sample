@@ -1,22 +1,6 @@
 {
   "posts": [
     {
-      "_id": "1",
-      "title": "aaa",
-      "subtitle": "bbb",
-      "createdAt": 1620217396758,
-      "isRead": true,
-      "content": "dkfjdaskfjaklsdjfkladjslkasjklasdjfkasjdfkdas,fdsafjasklda"
-    },
-    {
-      "_id": "2",
-      "title": "ccc",
-      "subtitle": "ddd",
-      "createdAt": 1620217396758,
-      "isRead": false,
-      "content": "dkfjdaskfjaklsdjfkladjslkasjklasdjfkasjdfkdas,fdsafjasklda"
-    },
-    {
       "title": "fdasfdsa",
       "subtitle": "fasdfasd",
       "content": "fdasfsdfa",

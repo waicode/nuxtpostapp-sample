@@ -92,7 +92,11 @@ export default {
     activatePost(post) {
       this.activePost = post
     },
-    deletePost() {},
+    deletePost() {
+      if (this.activePost) {
+        this.$store.dispatch('post/deletePost', this.activePost._id)
+      }
+    },
   },
 }
 </script>

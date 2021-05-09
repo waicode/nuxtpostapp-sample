@@ -38,13 +38,24 @@ export const actions = {
     const postIndex = state.items.findIndex((post) => {
       return post._id === postData._id
     })
-    return this.$axios
-      .$patch(`/api/posts/${postIndex}`, postData)
-      .then((res) => {
-        commit('replacePost', { post: postData, index: postIndex })
-      })
+    if (postIndex !== -1) {
+      return this.$axios
+        .$patch(`/api/posts/${postIndex}`, postData)
+        .then((res) => {
+          commit('replacePost', { post: postData, index: postIndex })
+        })
+    }
   },
-  deletePost({ commit, state }, postData) {},
+  deletePost({ commit, state }, postId) {
+    const postIndex = state.items.findIndex((post) => {
+      return post._id === postId
+    })
+    if (postIndex !== -1) {
+      return this.$axios.$delete(`/api/posts/${postIndex}`).then((res) => {
+        commit('deletePost', postIndex)
+      })
+    }
+  },
 }
 
 export const mutations = {
@@ -56,5 +67,8 @@ export const mutations = {
   },
   replacePost(state, { post, index }) {
     Vue.set(state.items, index, post)
+  },
+  deletePost(state, index) {
+    state.items.splice(index, 1)
   },
 }
