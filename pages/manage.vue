@@ -7,7 +7,11 @@
           <PostCreate />
         </aside>
         <div class="column is-4 messages hero is-fullheight" id="message-feed">
-          <div id="inbox-messages" class="inbox-messages">
+          <div
+            v-if="posts && posts.length > 0"
+            id="inbox-messages"
+            class="inbox-messages"
+          >
             <div
               v-for="post in posts"
               :key="post._id"
@@ -36,9 +40,12 @@
               </div>
             </div>
           </div>
+          <div v-else class="inbox-messages no-posts-title">
+            There are no posts :(
+          </div>
         </div>
         <div id="message-pane" class="column is-6 message hero is-fullheight">
-          <div class="box message-preview">
+          <div v-if="activePost" class="box message-preview">
             <button class="button is-danger delete-button" @click="deletePost">
               Delete
             </button>
@@ -70,7 +77,7 @@
 export default {
   data() {
     return {
-      activePost: {},
+      activePost: null,
     }
   },
   async fetch({ store }) {
@@ -84,17 +91,26 @@ export default {
     },
   },
   created() {
-    if (this.posts && this.posts.length > 0) {
-      this.activePost = this.posts[0]
-    }
+    this.setInitialActivePost()
   },
   methods: {
+    setInitialActivePost() {
+      if (this.posts && this.posts.length > 0) {
+        this.activePost = this.posts[0]
+      } else {
+        this.activePost = null
+      }
+    },
     activatePost(post) {
       this.activePost = post
     },
     deletePost() {
       if (this.activePost) {
-        this.$store.dispatch('post/deletePost', this.activePost._id)
+        this.$store
+          .dispatch('post/deletePost', this.activePost._id)
+          .then(() => {
+            this.setInitialActivePost()
+          })
       }
     },
   },

@@ -1,17 +1,18 @@
 import Vue from 'vue'
-import INITIAL_DATA from './data/initial_data.json'
+// import INITIAL_DATA from './data/initial_data.json'
 
-export function fetchPostsAPI() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(INITIAL_DATA.posts)
-    }, 0)
-  })
-}
+// export function fetchPostsAPI() {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(INITIAL_DATA.posts)
+//     }, 0)
+//   })
+// }
 
 export const state = () => {
   return {
     items: [],
+    archivedPosts: [],
   }
 }
 
@@ -22,8 +23,18 @@ export const getters = {
 }
 
 export const actions = {
+  getArchivedPosts({ commit }) {
+    const archivedPosts = localStorage.getItem('archived_posts')
+    if (archivedPosts) {
+      commit('setArchivedItems', JSON.parse(archivedPosts))
+      return archivedPosts
+    } else {
+      localStorage.setItem('archived_posts', JSON.stringify([]))
+      return []
+    }
+  },
   fetchPosts({ commit }) {
-    return fetchPostsAPI().then((posts) => {
+    return this.$axios.$get('/api/posts').then((posts) => {
       commit('setPosts', posts)
     })
   },
@@ -40,7 +51,7 @@ export const actions = {
     })
     if (postIndex !== -1) {
       return this.$axios
-        .$patch(`/api/posts/${postIndex}`, postData)
+        .$patch(`/api/posts/${postData._id}`, postData)
         .then((res) => {
           commit('replacePost', { post: postData, index: postIndex })
         })
@@ -51,7 +62,7 @@ export const actions = {
       return post._id === postId
     })
     if (postIndex !== -1) {
-      return this.$axios.$delete(`/api/posts/${postIndex}`).then((res) => {
+      return this.$axios.$delete(`/api/posts/${postId}`).then((res) => {
         commit('deletePost', postIndex)
       })
     }
@@ -59,6 +70,9 @@ export const actions = {
 }
 
 export const mutations = {
+  getArchivedPosts(state, archivedPosts) {
+    state.archivedPosts = archivedPosts
+  },
   setPosts(state, posts) {
     state.items = posts
   },

@@ -11,23 +11,22 @@
                   <h1>Newest Posts</h1>
                   <hr />
                 </div>
-                <PostItem
-                  v-for="post in posts"
-                  :key="post._id"
-                  :title="post.title"
-                  :subtitle="post.subtitle"
-                  :date="post.createdAt"
-                  :is-read="post.isRead"
-                />
+                <div v-if="posts && posts.length > 0">
+                  <PostItem
+                    v-for="post in posts"
+                    :key="post._id"
+                    :title="post.title"
+                    :subtitle="post.subtitle"
+                    :date="post.createdAt"
+                    :is-read="post.isRead"
+                  />
+                </div>
+                <div v-else>No Posts :(</div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <form>
-        <input v-model="form.title" type="text" />
-        <input v-model="form.subtitle" type="text" />
-      </form>
     </div>
   </div>
 </template>
@@ -57,9 +56,9 @@ export default {
       return this.$store.state.post.items
     },
   },
-  // mounted() {
-  //   this.$store.dispatch('post/fetchPosts')
-  // },
+  mounted() {
+    this.$store.dispatch('post/getArchivedPosts')
+  },
   methods: {
     isFormValid() {
       if (this.form.title) {

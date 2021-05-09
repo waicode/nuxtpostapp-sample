@@ -19,7 +19,7 @@ const writeFile = (res, data) => {
       if (err) {
         return responseError(res, err)
       }
-      return res.json('File successfully updated')
+      return res.json({ message: 'File successfully updated' })
     }
   )
 }
