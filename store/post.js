@@ -17,6 +17,7 @@ export const state = () => {
   return {
     items: [],
     archivedItems: [],
+    item: {},
   }
 }
 
@@ -27,6 +28,13 @@ export const getters = {
 }
 
 export const actions = {
+  fetchPostById({ commit }, postId) {
+    return this.$axios.$get('/api/posts').then((posts) => {
+      const selectedPost = posts.find((p) => p._id === postId)
+      commit('setPost', selectedPost)
+      return selectedPost
+    })
+  },
   getArchivedPosts({ commit }) {
     const archivedPosts = localStorage.getItem('archived_posts')
     if (archivedPosts) {
@@ -103,6 +111,9 @@ export const mutations = {
   },
   addPost(state, newPost) {
     state.items.push(newPost)
+  },
+  setPost(state, post) {
+    state.item = post
   },
   replacePost(state, { post, index }) {
     Vue.set(state.items, index, post)
