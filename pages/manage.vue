@@ -16,16 +16,25 @@
                   }"
                   @click="activatePost(post)"
                 >
-                  <div class="card-content">
-                    <div class="msg-subject">
-                      <span class="msg-subject"
-                        ><strong id="fake-subject-1">{{
-                          post.title
-                        }}</strong></span
-                      >
+                  <div class="columns">
+                    <div class="column is-2">
+                      <div class="card-content">
+                        <Emoji :emoji="post.emoji.id" size="48" />
+                      </div>
                     </div>
-                    <div class="msg-snippet">
-                      <p id="fake-snippet-1">{{ post.subtitle }}</p>
+                    <div class="column is-10">
+                      <div class="card-content">
+                        <div class="msg-subject">
+                          <span class="msg-subject">
+                            <strong id="fake-subject-1">
+                              {{ post.title }}
+                            </strong>
+                          </span>
+                        </div>
+                        <div class="msg-snippet">
+                          <p id="fake-snippet-1">{{ post.subtitle }}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -52,7 +61,11 @@
   </div>
 </template>
 <script>
+import { Emoji } from 'emoji-mart-vue'
 export default {
+  components: {
+    Emoji,
+  },
   data() {
     return {
       activePost: null,

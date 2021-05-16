@@ -1,35 +1,6 @@
 {
   "posts": [
     {
-      "title": "あああ",
-      "subtitle": "いいい",
-      "content": "ううう",
-      "_id": "7aam8gq",
-      "createdAt": 1620558330508
-    },
-    {
-      "title": "aaa",
-      "subtitle": "bbb",
-      "content": "ccc",
-      "_id": "2camciu",
-      "createdAt": 1620563049355
-    },
-    {
-      "title": "aaa",
-      "subtitle": "bbb",
-      "content": "ccc",
-      "_id": "3rc16n5",
-      "createdAt": 1621153488329
-    },
-    {
-      "title": "aaa",
-      "subtitle": "bbb",
-      "content": "ccc",
-      "emoji": "",
-      "_id": "dr9tt9v",
-      "createdAt": 1621153880660
-    },
-    {
       "title": "ccc",
       "subtitle": "ddd",
       "content": "aa",
