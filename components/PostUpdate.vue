@@ -111,6 +111,7 @@ export default {
     },
     selectEmoji(item) {
       this.selectedEmoji = item
+      this.post.emoji = item
     },
   },
 }

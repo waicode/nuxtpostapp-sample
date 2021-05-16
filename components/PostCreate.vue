@@ -82,6 +82,7 @@ export default {
         title: '',
         subtitle: '',
         content: '',
+        emoji: '',
       },
       selectedEmoji: 'grinning',
       emojiPickerSettings: {
@@ -122,9 +123,11 @@ export default {
       this.form.title = ''
       this.form.subtitle = ''
       this.form.content = ''
+      this.form.emoji = 'grinning'
     },
     selectEmoji(item) {
       this.selectedEmoji = item
+      this.form.emoji = item
     },
   },
 }
