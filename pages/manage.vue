@@ -16,14 +16,18 @@
                   }"
                   @click="activatePost(post)"
                 >
-                  <div class="columns">
-                    <div class="column is-2">
-                      <div class="card-content">
-                        <Emoji :emoji="post.emoji.id" size="48" />
+                  <div class="card-content">
+                    <div class="columns">
+                      <div class="column is-2">
+                        <div class="emoji-area">
+                          <Emoji
+                            :emoji="post.emoji.id"
+                            size="64"
+                            :sheet-size="64"
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div class="column is-10">
-                      <div class="card-content">
+                      <div class="column is-10">
                         <div class="msg-subject">
                           <span class="msg-subject">
                             <strong id="fake-subject-1">
@@ -116,6 +120,9 @@ export default {
 }
 .post-cards {
   margin-top: 16px;
+}
+.emoji-area {
+  text-align: center;
 }
 .card {
   margin-bottom: 10px;
