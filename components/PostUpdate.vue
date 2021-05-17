@@ -71,7 +71,7 @@ export default {
   data() {
     return {
       post: { ...this.postData },
-      selectedEmoji: 'grinning',
+      selectedEmoji: this.postData.emoji,
       emojiPickerSettings: {
         search: '検索',
         notfound: '絵文字が見つかりません😢',
@@ -110,8 +110,8 @@ export default {
       this.$store.dispatch('post/updatePost', { ...this.post })
     },
     selectEmoji(item) {
-      this.selectedEmoji = item
-      this.post.emoji = item
+      this.selectedEmoji = item.id
+      this.post.emoji = item.id
     },
   },
 }

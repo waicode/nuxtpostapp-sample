@@ -20,11 +20,7 @@
                     <div class="columns">
                       <div class="column is-2">
                         <div class="emoji-area">
-                          <Emoji
-                            :emoji="post.emoji.id"
-                            size="64"
-                            :sheet-size="64"
-                          />
+                          <Emoji :emoji="post.emoji" :size="64" />
                         </div>
                       </div>
                       <div class="column is-10">
