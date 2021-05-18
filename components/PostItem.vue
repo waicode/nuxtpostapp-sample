@@ -1,25 +1,48 @@
 <template>
-  <div class="post">
-    <div class="post-content">
-      <nuxt-link
-        :to="`/posts/${id}`"
-        class="post-header post-header-link clickable"
-      >
-        <h4 class="title is-4">{{ title }}</h4>
-        <h5 class="subtitle is-5">{{ subtitle }}</h5>
-      </nuxt-link>
-      <div class="post-footer">created at {{ date | formatDate('LLL') }}</div>
-    </div>
-    <div class="post-right">
-      <label class="checkbox">
-        <input :checked="isArchived" type="checkbox" @change="togglePost" />Read
-      </label>
+  <div class="card">
+    <div class="card-content">
+      <div class="columns">
+        <div class="column is-2">
+          <div class="emoji-area">
+            <Emoji :emoji="emoji" :size="64" :sheet-size="64" />
+          </div>
+        </div>
+        <div class="column is-9">
+          <div class="post">
+            <div class="post-content">
+              <nuxt-link
+                :to="`/posts/${id}`"
+                class="post-header post-header-link clickable"
+              >
+                <h4 class="title is-4">{{ title }}</h4>
+                <h5 class="subtitle is-5">{{ subtitle }}</h5>
+              </nuxt-link>
+              <div class="post-footer">
+                created at {{ date | formatDate('LLL') }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column is-1">
+          <label class="checkbox">
+            <input
+              :checked="isArchived"
+              type="checkbox"
+              @change="togglePost"
+            />Read
+          </label>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 <script>
+import { Emoji } from 'emoji-mart-vue'
 import moment from 'moment'
 export default {
+  components: {
+    Emoji,
+  },
   props: {
     id: {
       type: String,
@@ -38,6 +61,10 @@ export default {
       type: Number,
       required: false,
       default: new Date(),
+    },
+    emoji: {
+      type: String,
+      required: true,
     },
   },
   data() {
@@ -71,16 +98,14 @@ export default {
   &-content {
     flex: 1;
   }
-  &-right {
-    float: right;
-    justify-content: flex-end;
-    align-self: center;
-  }
   &-footer {
     font-style: italic;
   }
   &:hover {
     border-bottom: 2px solid #e8e8e8;
   }
+}
+.emoji-area {
+  text-align: center;
 }
 </style>

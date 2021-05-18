@@ -18,6 +18,7 @@
                     :title="post.title"
                     :subtitle="post.subtitle"
                     :date="post.createdAt"
+                    :emoji="post.emoji"
                   />
                 </div>
                 <div v-else>No Posts :(</div>

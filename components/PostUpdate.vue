@@ -103,6 +103,7 @@ export default {
   watch: {
     postData(data, oldValue) {
       this.post = { ...data }
+      this.selectedEmoji = data.emoji
     },
   },
   methods: {
