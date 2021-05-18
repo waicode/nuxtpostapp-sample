@@ -7,7 +7,7 @@
             <div class="column is-10 is-offset-1">
               <div class="section">
                 <div class="title">
-                  <h1>Newest Posts</h1>
+                  <h1>新規投稿</h1>
                   <hr />
                 </div>
                 <div v-if="posts && posts.length > 0">

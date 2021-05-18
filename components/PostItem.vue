@@ -7,7 +7,7 @@
             <Emoji :emoji="emoji" :size="64" :sheet-size="64" />
           </div>
         </div>
-        <div class="column is-9">
+        <div class="column is-8">
           <div class="post">
             <div class="post-content">
               <nuxt-link
@@ -23,14 +23,16 @@
             </div>
           </div>
         </div>
-        <div class="column is-1">
-          <label class="checkbox">
-            <input
-              :checked="isArchived"
-              type="checkbox"
-              @change="togglePost"
-            />Read
-          </label>
+        <div class="column is-2">
+          <div class="read-checkbox-area">
+            <label class="checkbox">
+              <input
+                :checked="isArchived"
+                type="checkbox"
+                @change="togglePost"
+              />既読
+            </label>
+          </div>
         </div>
       </div>
     </div>
@@ -107,5 +109,13 @@ export default {
 }
 .emoji-area {
   text-align: center;
+}
+.read-checkbox-area {
+  text-align: right;
+  .checkbox input,
+  .radio input {
+    cursor: pointer;
+    margin-right: 4px;
+  }
 }
 </style>
