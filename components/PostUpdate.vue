@@ -2,29 +2,29 @@
   <form class="post-form">
     <div class="post-filed-area">
       <div class="field">
-        <label class="label">Title</label>
+        <label class="label">件名</label>
         <div class="control">
           <input
             v-model="post.title"
             class="input"
             type="text"
-            placeholder="Awesome Title"
+            placeholder=""
           />
         </div>
       </div>
       <div class="field">
-        <label class="label">Subtitle</label>
+        <label class="label">サブタイトル</label>
         <div class="control">
           <input
             v-model="post.subtitle"
             class="input"
             type="text"
-            placeholder="Awesome subtitle"
+            placeholder=""
           />
         </div>
       </div>
       <div class="field">
-        <label class="label">Emoji</label>
+        <label class="label">絵文字</label>
         <Emoji :emoji="selectedEmoji" :size="48" class="emoji-image" />
         <Picker
           set="apple"
@@ -37,22 +37,22 @@
         />
       </div>
       <div class="field">
-        <label class="label">Content</label>
+        <label class="label">内容</label>
         <div class="control">
           <textarea
             v-model="post.content"
             class="textarea"
-            placeholder="Awesome Content"
+            placeholder=""
           ></textarea>
         </div>
       </div>
       <div class="markdown">
-        <label class="label">Content Preview</label>
-        <div v-html="compiledMarkdown"></div>
+        <label class="label">プレビュー</label>
+        <div v-html="compiledMarkdown" class="preview"></div>
       </div>
     </div>
     <button @click.prevent="updatePost" class="button is-primary update-button">
-      Update
+      更新
     </button>
   </form>
 </template>
@@ -122,12 +122,21 @@ export default {
   margin-top: 12px;
   margin-bottom: 16px;
 }
+.field {
+  margin-bottom: 24px;
+}
+.preview {
+  border: solid 1px #d9d9d9;
+  border-radius: 4px;
+  padding: 12px;
+  min-height: 132px;
+}
 .update-button {
   display: block;
-  width: 92%;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 30px;
+  margin-top: 48px;
   margin-bottom: 15px;
 }
 .emoji-image {

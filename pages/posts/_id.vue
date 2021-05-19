@@ -12,6 +12,7 @@
                 <div class="post-content">
                   <h1 class="title">{{ post.title }}</h1>
                   <h2 class="subtitle">{{ post.subtitle }}</h2>
+                  <hr />
                   <div class="markdown">
                     <div v-html="compiledMarkdown"></div>
                   </div>
@@ -37,14 +38,12 @@ export default {
     post() {
       return this.$store.state.post.item
     },
-    computed: {
-      compiledMarkdown() {
-        if (process.client) {
-          // eslint-disable-next-line no-undef
-          return marked(this.post.content, { sanitize: true })
-        }
-        return ''
-      },
+    compiledMarkdown() {
+      if (process.client) {
+        // eslint-disable-next-line no-undef
+        return marked(this.post.content, { sanitize: true })
+      }
+      return ''
     },
   },
 }
@@ -55,6 +54,9 @@ export default {
   margin: 4px 0 24px;
 }
 .title {
-  margin-bottom: 32px;
+  margin-bottom: 40px;
+}
+.subtitle {
+  margin-bottom: 28px;
 }
 </style>

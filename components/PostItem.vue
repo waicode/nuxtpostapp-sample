@@ -18,7 +18,7 @@
                 <h5 class="subtitle is-5">{{ subtitle }}</h5>
               </nuxt-link>
               <div class="post-footer">
-                created at {{ date | formatDate('LLL') }}
+                投稿日時： {{ date | formatDate('YYYY-MM-DD HH:mm') }}
               </div>
             </div>
           </div>
@@ -94,11 +94,17 @@ export default {
   margin: 15px 0;
 }
 .post {
-  margin-bottom: 20px;
   padding: 5px;
   border-bottom: 2px solid transparent;
   display: flex;
   flex-direction: row;
+
+  .title {
+    margin-bottom: 28px;
+  }
+  .subtitle {
+    margin-bottom: 12px;
+  }
 
   &-content {
     flex: 1;
@@ -110,8 +116,10 @@ export default {
     border-bottom: 2px solid #e8e8e8;
   }
 }
+
 .emoji-area {
   text-align: center;
+  margin-top: 20px;
 }
 .read-checkbox-area {
   text-align: right;

@@ -50,7 +50,7 @@
                 class="button is-danger delete-button"
                 @click="deletePost"
               >
-                Delete
+                削除
               </button>
               <PostUpdate :post-data="activePost" />
             </div>

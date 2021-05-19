@@ -5,3 +5,8 @@
     </div>
   </footer>
 </template>
+<style lang="scss" scoped>
+.footer {
+  margin-top: 20px;
+}
+</style>

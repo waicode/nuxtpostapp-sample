@@ -7,36 +7,36 @@
   >
     <template #actionButton>
       <a class="button is-primary is-block is-bold create-button">
-        <span class="compose">Create</span>
+        <span class="compose">登録</span>
       </a>
     </template>
     <template #formContent>
       <form class="post-form">
         <div class="field">
-          <label class="label">Title</label>
+          <label class="label">件名</label>
           <div class="control">
             <input
               v-model="form.title"
               class="input"
               type="text"
-              placeholder="Awesome Title"
+              placeholder=""
             />
           </div>
         </div>
 
         <div class="field">
-          <label class="label">Subtitle</label>
+          <label class="label">サブタイトル</label>
           <div class="control">
             <input
               v-model="form.subtitle"
               class="input"
               type="email"
-              placeholder="Awesome subtitle"
+              placeholder=""
             />
           </div>
         </div>
         <div class="field">
-          <label class="label">Emoji</label>
+          <label class="label">絵文字</label>
           <Emoji :emoji="selectedEmoji" :size="48" class="emoji-image" />
           <Picker
             set="apple"
@@ -49,18 +49,18 @@
           />
         </div>
         <div class="field">
-          <label class="label">Content</label>
+          <label class="label">内容</label>
           <div class="control">
             <textarea
               v-model="form.content"
               class="textarea"
-              placeholder="Awesome Content"
+              placeholder=""
             ></textarea>
           </div>
         </div>
         <div class="markdown">
-          <label class="label">Content Preview</label>
-          <div v-html="compiledMarkdown"></div>
+          <label class="label">プレビュー</label>
+          <div v-html="compiledMarkdown" class="preview"></div>
         </div>
       </form>
     </template>
@@ -133,6 +133,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.field {
+  margin-bottom: 20px;
+}
 .create-button {
   display: block;
   width: 100px;
@@ -144,5 +147,11 @@ export default {
   border: 1px solid #d9d9d9;
   border-radius: 5px;
   margin-bottom: 15px;
+}
+.preview {
+  border: solid 1px #d9d9d9;
+  border-radius: 4px;
+  padding: 12px;
+  min-height: 132px;
 }
 </style>
