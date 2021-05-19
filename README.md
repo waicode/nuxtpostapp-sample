@@ -5,5 +5,5 @@
 <br />
 
 <p align="center">
-    <img src="https://i.gyazo.com/c89814444863690ec6075d389a00498e.jpg" width="480">
+    <img src="https://i.gyazo.com/e96854afe38ae309b6ca98b6762bc6b3.gif" width="480">
 </p>
