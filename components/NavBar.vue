@@ -32,10 +32,10 @@
             class="navbar-item has-dropdown"
             :class="{ 'is-active': isActive }"
           >
-            <a class="navbar-link"> Menu </a>
+            <a class="navbar-link"> メニュー </a>
             <div class="navbar-dropdown">
-              <nuxt-link to="/" class="navbar-item"> Home </nuxt-link>
-              <nuxt-link to="/manage" class="navbar-item"> Manage </nuxt-link>
+              <nuxt-link to="/" class="navbar-item"> トップ </nuxt-link>
+              <nuxt-link to="/manage" class="navbar-item"> 管理 </nuxt-link>
             </div>
           </div>
         </div>

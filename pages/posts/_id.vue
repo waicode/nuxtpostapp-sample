@@ -6,9 +6,8 @@
           <div class="columns is-mobile">
             <div class="column is-8 is-offset-2">
               <div class="section">
-                <div class="title">
-                  <h1>Detail View</h1>
-                  <hr />
+                <div class="emoji-area">
+                  <Emoji :emoji="post.emoji" :size="64" :sheet-size="64" />
                 </div>
                 <div class="post-content">
                   <h1 class="title">{{ post.title }}</h1>
@@ -26,7 +25,11 @@
   </div>
 </template>
 <script>
+import { Emoji } from 'emoji-mart-vue'
 export default {
+  components: {
+    Emoji,
+  },
   fetch({ params, store }) {
     return store.dispatch('post/fetchPostById', params.id)
   },
@@ -46,3 +49,12 @@ export default {
   },
 }
 </script>
+<style lang="scss" scoped>
+.emoji-area {
+  text-align: center;
+  margin: 4px 0 24px;
+}
+.title {
+  margin-bottom: 32px;
+}
+</style>

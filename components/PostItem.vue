@@ -90,6 +90,9 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+.card {
+  margin: 15px 0;
+}
 .post {
   margin-bottom: 20px;
   padding: 5px;
