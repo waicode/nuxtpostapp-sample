@@ -1,20 +1,9 @@
-# nuxtpostapp-sample
+- Nuxt.js で作成した 投稿管理のサンプルアプリケーションです
+- 絵文字とマークダウンを投稿できます（emoji-mart-vue, marked を利用）
+- 状態管理に Vuex は使用し、投稿データは JSON ファイル、既読状態は localstorage に保存しています
 
-## Build Setup
+<br />
 
-```bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+<p align="center">
+    <img src="https://i.gyazo.com/c89814444863690ec6075d389a00498e.jpg" width="480">
+</p>
